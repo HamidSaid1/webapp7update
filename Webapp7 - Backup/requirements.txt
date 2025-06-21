@@ -1,0 +1,11 @@
+flask
+ib_insync
+pandas
+nest_asyncio
+pytz
+ib-insync
+nest-asyncio
+numpy
+scikit-learn
+gunicorn
+ib_insync

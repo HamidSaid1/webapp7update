@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - AutoTrade Plus{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="settings" class="me-2"></i>Trading Parameters
+                    <small class="text-muted ms-2">(Exact from reserve_file.py)</small>
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="settings-form">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="tickers" class="form-label">Tickers</label>
+                                <input type="text" class="form-control" id="tickers" name="tickers" 
+                                       placeholder="e.g., AAPL,MSFT,GOOGL" pattern=".*" title="Enter any ticker symbols separated by commas">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exchange_var" class="form-label">Exchange</label>
+                                <input type="text" class="form-control" id="exchange_var" placeholder="e.g., SMART, NYSE, NASDAQ" pattern=".*" title="Enter any exchange name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="chart_interval" class="form-label">Chart Interval</label>
+                                <select class="form-select" id="chart_interval" name="chart_interval">
+                                    <option value="1 min">1 min</option>
+                                    <option value="3 min">3 min</option>
+                                    <option value="5 min">5 min</option>
+                                    <option value="15 min">15 min</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="analysis_interval" class="form-label">Analysis Interval</label>
+                                <input type="number" class="form-control" id="analysis_interval" 
+                                       name="analysis_interval" step="any" title="Enter any analysis interval">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="rsi_period" class="form-label">RSI Period</label>
+                                <input type="number" class="form-control" id="rsi_period" 
+                                       name="rsi_period" step="any" title="Enter any RSI period">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="bb_period" class="form-label">Bollinger Bands Period</label>
+                                <input type="number" class="form-control" id="bb_period" 
+                                       name="bb_period" step="any" title="Enter any Bollinger Bands period">
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="stoch_k_period" class="form-label">Stochastic %K Period</label>
+                                <input type="number" class="form-control" id="stoch_k_period" 
+                                       name="stoch_k_period" step="any" title="Enter any Stochastic K period">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="stoch_d_period" class="form-label">Stochastic %D Period</label>
+                                <input type="number" class="form-control" id="stoch_d_period" 
+                                       name="stoch_d_period" step="any" title="Enter any Stochastic D period">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="stoch_k_min" class="form-label">Stochastic %K Min</label>
+                                <input type="number" class="form-control" id="stoch_k_min" 
+                                       name="stoch_k_min" step="any" title="Enter any Stochastic K minimum">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="stoch_d_min" class="form-label">Stochastic %D Min</label>
+                                <input type="number" class="form-control" id="stoch_d_min" 
+                                       name="stoch_d_min" step="any" title="Enter any Stochastic D minimum">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="equity_per_trade" class="form-label">Equity Per Trade ($)</label>
+                                <input type="number" class="form-control" id="equity_per_trade" 
+                                       name="equity_per_trade" step="any" title="Enter any equity amount per trade">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hard_stop_loss" class="form-label">Hard Stop Loss</label>
+                                <input type="number" class="form-control" id="hard_stop_loss" 
+                                       name="hard_stop_loss" step="any" title="Enter any stop loss percentage">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="duration_str" class="form-label">Duration</label>
+                                <input type="text" class="form-control" id="duration_str" 
+                                       name="duration_str" placeholder="1 D">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="data_points" class="form-label">Data Points</label>
+                                <input type="number" class="form-control" id="data_points" 
+                                       name="data_points" step="any" title="Enter any number of data points">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" id="reset-btn">
+                            <i data-feather="refresh-cw" class="me-1"></i>Reset to Defaults
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-feather="save" class="me-1"></i>Save Parameters
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Current Settings Summary -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="info" class="me-2"></i>Current Settings
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="settings-summary" id="settings-summary">
+                    <div class="text-center text-muted">
+                        <i data-feather="loader" class="me-2"></i>Loading settings...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trading Criteria Info -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i data-feather="target" class="me-2"></i>Trading Criteria
+                    <small class="text-muted">(from reserve_file.py)</small>
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="small">
+                    <p class="mb-2"><strong>Exact Thresholds:</strong></p>
+                    <ul class="list-unstyled small">
+                        <li>• Price Rate ≥ 0.257142857</li>
+                        <li>• RSI Rate ≥ 0.201904762</li>
+                        <li>• Bollinger Rate ≥ 1.48571429</li>
+                        <li>• %K > %D (crossover)</li>
+                        <li>• %K ≥ Stoch K Min</li>
+                        <li>• %D ≥ Stoch D Min</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="activity" class="me-2"></i>Market Data Streaming
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-start">
+                    <button type="button" class="btn btn-success" id="start-streaming-btn" onclick="startStreaming()">
+                            <i data-feather="play" class="me-1"></i>Start Streaming
+                        </button>
+                        <button type="button" class="btn btn-warning" id="stop-streaming-btn" onclick="stopStreaming()">
+                            <i data-feather="pause" class="me-1"></i>Stop Streaming
+                        </button>
+                </div>
+                <div id="streaming-status" class="mt-3">
+                    <p class="text-muted">Streaming is currently: <span id="streaming-state">Inactive</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - AutoTrade Plus{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Market Data Panel -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i data-feather="trending-up" class="me-2"></i>Live Market Feed
+                </h5>
+                <small class="text-muted" id="last-update">Last updated: Never</small>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="market-data-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Exchange</th>
+                                <th>Last Price</th>
+                                <th>RSI</th>
+                                <th>Bollinger %</th>
+                                <th>%K</th>
+                                <th>%D</th>
+                                <th>ΔP Rate</th>
+                                <th>ΔRSI Rate</th>
+                                <th>ΔBB Rate</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="market-data-body">
+                            <tr>
+                                <td colspan="11" class="text-center text-muted py-4">
+                                    <i data-feather="wifi-off" class="me-2"></i>
+                                    No market data available. Please connect and start streaming.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats Panel -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="activity" class="me-2"></i>Quick Stats
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="stat-value" id="available-funds">$0.00</div>
+                            <div class="stat-label">Available Funds</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="stat-value" id="active-positions">0</div>
+                            <div class="stat-label">Active Positions</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-trades">0</div>
+                            <div class="stat-label">Total Trades</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-profit">$0.00</div>
+                            <div class="stat-label">Total P&L</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Last Changes -->
+                <div class="mt-4">
+                    <h6 class="mb-3">Last Rate Changes</h6>
+                    <div class="small">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Price Rate:</span>
+                            <span class="fw-bold" id="last-price-change">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>RSI Rate:</span>
+                            <span class="fw-bold" id="last-rsi-change">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Bollinger Rate:</span>
+                            <span class="fw-bold" id="last-bollinger-change">N/A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Open Trades Panel -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="briefcase" class="me-2"></i>Open Trades
+                </h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="trades-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Quantity</th>
+                                <th>Buy Price</th>
+                                <th>Current Price</th>
+                                <th>Unrealized P&L</th>
+                                <th>Timestamp</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trades-body">
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-4">
+                                    <i data-feather="inbox" class="me-2"></i>
+                                    No open trades
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="controls-section">
+                <h3>Trading Controls</h3>
+                <div class="control-buttons">
+                    <button id="connectBtn" class="btn btn-primary">Connect</button>
+                    <button id="disconnectBtn" class="btn btn-secondary">Disconnect</button>
+                    <button id="startStreamingBtn" class="btn btn-success">Start Streaming</button>
+                    <button id="stopStreamingBtn" class="btn btn-danger">Stop Streaming</button>
+                    <button id="forceTradeBtn" class="btn btn-warning">Toggle Force Trade</button>
+                </div>
+            </div>
+
+            <div class="force-trade-section">
+                <h3>Force Trade Controls</h3>
+                <div class="force-trade-controls">
+                    <div class="force-trade-input">
+                        <label for="forceTradeSymbol">Stock Symbol:</label>
+                        <select id="forceTradeSymbol" class="form-control">
+                            <option value="">Select Symbol</option>
+                        </select>
+                    </div>
+                    <div class="force-trade-buttons">
+                        <button id="forceBuyBtn" class="btn btn-success" disabled>Force BUY</button>
+                        <button id="forceSellBtn" class="btn btn-danger" disabled>Force SELL</button>
+                    </div>
+                    <div class="force-trade-status">
+                        <span id="forceTradeStatus">Force trade mode: Disabled</span>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

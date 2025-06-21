@@ -1,0 +1,27 @@
+2025-06-21 15:20:11,960 - standalone_trading_app - INFO - Using real IBKR market data
+2025-06-21 15:20:20,839 - standalone_trading_app - INFO - Starting market data streaming
+2025-06-21 15:20:20,841 - standalone_trading_app - INFO - Setting up streaming for 1 tickers: ['APVO']
+2025-06-21 15:20:20,846 - standalone_trading_app - INFO - Using real IBKR market data
+2025-06-21 15:20:22,338 - standalone_trading_app - INFO - Attempting connection to TWS Paper Trading on port 7497
+2025-06-21 15:20:22,340 - ib_insync.client - INFO - Connecting to 127.0.0.1:7497 with clientId 1...
+2025-06-21 15:20:22,348 - ib_insync.client - INFO - Connected
+2025-06-21 15:20:22,368 - ib_insync.client - INFO - Logged on to server version 176
+2025-06-21 15:20:22,873 - ib_insync.client - ERROR - Peer closed connection. clientId 1 already in use?
+2025-06-21 15:20:27,373 - ib_insync.client - INFO - Disconnecting
+2025-06-21 15:20:27,374 - ib_insync.client - ERROR - API connection failed: TimeoutError()
+2025-06-21 15:20:27,377 - standalone_trading_app - INFO - Attempting connection to TWS Live Trading on port 7496
+2025-06-21 15:20:27,378 - ib_insync.client - INFO - Connecting to 127.0.0.1:7496 with clientId 1...
+2025-06-21 15:20:29,398 - ib_insync.client - INFO - Disconnecting
+2025-06-21 15:20:29,399 - ib_insync.client - ERROR - API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2025-06-21 15:20:29,404 - ib_insync.client - ERROR - Make sure API port on TWS/IBG is open
+2025-06-21 15:20:29,413 - standalone_trading_app - INFO - Attempting connection to IB Gateway Paper Trading on port 4001
+2025-06-21 15:20:29,414 - ib_insync.client - INFO - Connecting to 127.0.0.1:4001 with clientId 1...
+2025-06-21 15:20:31,429 - ib_insync.client - INFO - Disconnecting
+2025-06-21 15:20:31,430 - ib_insync.client - ERROR - API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2025-06-21 15:20:31,434 - ib_insync.client - ERROR - Make sure API port on TWS/IBG is open
+2025-06-21 15:20:31,436 - standalone_trading_app - INFO - Attempting connection to IB Gateway Live Trading on port 4002
+2025-06-21 15:20:31,445 - ib_insync.client - INFO - Connecting to 127.0.0.1:4002 with clientId 1...
+2025-06-21 15:20:33,474 - ib_insync.client - INFO - Disconnecting
+2025-06-21 15:20:33,475 - ib_insync.client - ERROR - API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+2025-06-21 15:20:33,479 - ib_insync.client - ERROR - Make sure API port on TWS/IBG is open
+2025-06-21 15:20:33,485 - standalone_trading_app - ERROR - ❌ TWS connection failed: Could not connect to any IBKR ports

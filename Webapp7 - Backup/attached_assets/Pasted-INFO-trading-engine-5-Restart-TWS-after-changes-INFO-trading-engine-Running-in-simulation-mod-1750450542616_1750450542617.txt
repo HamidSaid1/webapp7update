@@ -1,0 +1,140 @@
+INFO:trading_engine:   5. Restart TWS after changes
+INFO:trading_engine:✅ Running in simulation mode
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:28] "POST /api/connect HTTP/1.1" 200 -
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 4002 failed: [WinError 1225] The remote computer refused the network connection
+ERROR:trading_engine:❌ TWS connection failed: Could not connect to any IBKR ports: [7497, 7496, 4001, 4002]
+INFO:trading_engine:📋 TWS API Setup Required:
+INFO:trading_engine:   1. In TWS: File → Global Configuration
+INFO:trading_engine:   2. API → Settings → Enable ActiveX and Socket Clients
+INFO:trading_engine:   3. Socket port: 7497 (paper trading)
+INFO:trading_engine:   4. Uncheck 'Read-Only API' for trading
+INFO:trading_engine:   5. Restart TWS after changes
+INFO:trading_engine:✅ Running in simulation mode
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:28] "POST /api/connect HTTP/1.1" 200 -
+ERROR:ib_insync.client:Peer closed connection. clientId 1 already in use?
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 4002 failed: [WinError 1225] The remote computer refused the network connection
+ERROR:trading_engine:❌ TWS connection failed: Could not connect to any IBKR ports: [7497, 7496, 4001, 4002]
+INFO:trading_engine:📋 TWS API Setup Required:
+INFO:trading_engine:   1. In TWS: File → Global Configuration
+INFO:trading_engine:   2. API → Settings → Enable ActiveX and Socket Clients
+INFO:trading_engine:   3. Socket port: 7497 (paper trading)
+INFO:trading_engine:   4. Uncheck 'Read-Only API' for trading
+INFO:trading_engine:   5. Restart TWS after changes
+INFO:trading_engine:✅ Running in simulation mode
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:29] "POST /api/connect HTTP/1.1" 200 -
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 4002 failed: [WinError 1225] The remote computer refused the network connection
+ERROR:trading_engine:❌ TWS connection failed: Could not connect to any IBKR ports: [7497, 7496, 4001, 4002]
+INFO:trading_engine:📋 TWS API Setup Required:
+INFO:trading_engine:   1. In TWS: File → Global Configuration
+INFO:trading_engine:   2. API → Settings → Enable ActiveX and Socket Clients
+INFO:trading_engine:   3. Socket port: 7497 (paper trading)
+INFO:trading_engine:   4. Uncheck 'Read-Only API' for trading
+INFO:trading_engine:   5. Restart TWS after changes
+INFO:trading_engine:✅ Running in simulation mode
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:30] "POST /api/connect HTTP/1.1" 200 -
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: TimeoutError()
+DEBUG:trading_engine:Port 7497 failed:
+INFO:trading_engine:Attempting connection to TWS Live Trading on port 7496
+INFO:ib_insync.client:Connecting to 127.0.0.1:7496 with clientId 1...
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:33] "GET /api/status HTTP/1.1" 200 -
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 7496 failed: [WinError 1225] The remote computer refused the network connection
+INFO:trading_engine:Attempting connection to IB Gateway Paper Trading on port 4001
+INFO:ib_insync.client:Connecting to 127.0.0.1:4001 with clientId 1...
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 4001 failed: [WinError 1225] The remote computer refused the network connection
+INFO:trading_engine:Attempting connection to IB Gateway Live Trading on port 4002
+INFO:ib_insync.client:Connecting to 127.0.0.1:4002 with clientId 1...
+INFO:trading_engine:Stopped market data streaming
+DEBUG:asyncio:Using proactor: IocpProactor
+ERROR:__main__:Streaming stop error: An asyncio.Future, a coroutine or an awaitable is required
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:37] "POST /api/stop_streaming HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:38] "GET /api/status HTTP/1.1" 200 -
+INFO:ib_insync.client:Disconnecting
+ERROR:ib_insync.client:API connection failed: ConnectionRefusedError(22, 'The remote computer refused the network connection', None, 1225, None)
+ERROR:ib_insync.client:Make sure API port on TWS/IBG is open
+DEBUG:trading_engine:Port 4002 failed: [WinError 1225] The remote computer refused the network connection
+ERROR:trading_engine:❌ TWS connection failed: Could not connect to any IBKR ports: [7497, 7496, 4001, 4002]
+INFO:trading_engine:📋 TWS API Setup Required:
+INFO:trading_engine:   1. In TWS: File → Global Configuration
+INFO:trading_engine:   2. API → Settings → Enable ActiveX and Socket Clients
+INFO:trading_engine:   3. Socket port: 7497 (paper trading)
+INFO:trading_engine:   4. Uncheck 'Read-Only API' for trading
+INFO:trading_engine:   5. Restart TWS after changes
+INFO:trading_engine:✅ Running in simulation mode
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:39] "POST /api/connect HTTP/1.1" 200 -
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:trading_engine:Starting market data streaming
+INFO:trading_engine:Setting up streaming for 1 tickers: ['ABTS']
+INFO:trading_engine:Using real IBKR market data
+ERROR:trading_engine:❌ Error setting up ABTS: Not connected
+INFO:trading_engine:🚀 Real market data streaming started for 1 symbols
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:41] "POST /api/start_streaming HTTP/1.1" 200 -
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:trading_engine:Starting market data streaming
+INFO:trading_engine:Setting up streaming for 1 tickers: ['ABTS']
+INFO:trading_engine:Using real IBKR market data
+ERROR:trading_engine:❌ Error setting up ABTS: Not connected
+INFO:trading_engine:🚀 Real market data streaming started for 1 symbols
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:42] "POST /api/start_streaming HTTP/1.1" 200 -
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:trading_engine:Starting market data streaming
+INFO:trading_engine:Setting up streaming for 1 tickers: ['ABTS']
+INFO:trading_engine:Using real IBKR market data
+ERROR:trading_engine:❌ Error setting up ABTS: Not connected
+INFO:trading_engine:🚀 Real market data streaming started for 1 symbols
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:43] "POST /api/start_streaming HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:43] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:48] "GET /api/status HTTP/1.1" 200 -
+DEBUG:asyncio:Using proactor: IocpProactor
+INFO:trading_engine:Starting market data streaming
+INFO:trading_engine:Setting up streaming for 1 tickers: ['ABTS']
+INFO:trading_engine:Using real IBKR market data
+ERROR:trading_engine:❌ Error setting up ABTS: Not connected
+INFO:trading_engine:🚀 Real market data streaming started for 1 symbols
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:50] "POST /api/start_streaming HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:53] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:58] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:59] "GET /settings HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:59] "←[36mGET /static/css/styles.css HTTP/1.1←[0m" 304 -
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-56' coro=<AdvancedTradingEngine._analysis_loop() running at C:\Webapp5\trading_engine.py:512>>
+C:\Users\hamid\conda\envs\ibapi2\lib\asyncio\base_events.py:672: RuntimeWarning: coroutine 'AdvancedTradingEngine._analysis_loop' was never awaited
+  self._ready.clear()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-58' coro=<AdvancedTradingEngine._analysis_loop() running at C:\Webapp5\trading_engine.py:512>>
+ERROR:asyncio:Task was destroyed but it is pending!
+task: <Task pending name='Task-60' coro=<AdvancedTradingEngine._analysis_loop() running at C:\Webapp5\trading_engine.py:512>>
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:59] "←[36mGET /static/js/settings.js HTTP/1.1←[0m" 304 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:59] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:14:59] "GET /api/parameters HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "←[36mGET /static/css/styles.css HTTP/1.1←[0m" 304 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "←[36mGET /static/js/dashboard.js HTTP/1.1←[0m" 304 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "GET /api/active_orders HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "GET /api/market_data HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:01] "GET /api/analytics HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:06] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:06] "GET /api/active_orders HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:06] "GET /api/market_data HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:06] "GET /api/analytics HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:11] "GET /api/status HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:11] "GET /api/active_orders HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:11] "GET /api/market_data HTTP/1.1" 200 -
+INFO:werkzeug:10.2.44.157 - - [20/Jun/2025 16:15:11] "GET /api/analytics HTTP/1.1" 200 -

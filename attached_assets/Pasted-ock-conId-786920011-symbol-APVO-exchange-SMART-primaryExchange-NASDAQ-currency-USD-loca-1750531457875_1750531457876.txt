@@ -1,0 +1,17 @@
+ock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:50,496 - ib_insync.ib - WARNING - reqHistoricalData: Timeout for Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:50,499 - standalone_trading_app - WARNING - ⚠️ No historical data available for APVO
+2025-06-21 13:43:50,507 - standalone_trading_app - ERROR - Real streaming failed - no fallback available
+2025-06-21 13:43:50,511 - ib_insync.wrapper - ERROR - Error 162, reqId 264898: Historical Market Data Service error message:API historical data query cancelled: 264898, contract: Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:50,549 - ib_insync.ib - WARNING - reqHistoricalData: Timeout for Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:50,552 - standalone_trading_app - WARNING - ⚠️ No historical data available for APVO
+2025-06-21 13:43:50,557 - standalone_trading_app - ERROR - Real streaming failed - no fallback available
+2025-06-21 13:43:50,561 - ib_insync.wrapper - ERROR - Error 162, reqId 264900: Historical Market Data Service error message:API historical data query cancelled: 264900, contract: Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:51,147 - ib_insync.ib - WARNING - reqHistoricalData: Timeout for Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:51,149 - standalone_trading_app - WARNING - ⚠️ No historical data available for APVO
+2025-06-21 13:43:51,153 - standalone_trading_app - ERROR - Real streaming failed - no fallback available
+2025-06-21 13:43:51,158 - ib_insync.wrapper - ERROR - Error 162, reqId 264903: Historical Market Data Service error message:API historical data query cancelled: 264903, contract: Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:51,473 - ib_insync.ib - WARNING - reqHistoricalData: Timeout for Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')
+2025-06-21 13:43:51,476 - standalone_trading_app - WARNING - ⚠️ No historical data available for APVO
+2025-06-21 13:43:51,480 - standalone_trading_app - ERROR - Real streaming failed - no fallback available
+2025-06-21 13:43:51,484 - ib_insync.wrapper - ERROR - Error 162, reqId 264905: Historical Market Data Service error message:API historical data query cancelled: 264905, contract: Stock(conId=786920011, symbol='APVO', exchange='SMART', primaryExchange='NASDAQ', currency='USD', localSymbol='APVO', tradingClass='SCM')

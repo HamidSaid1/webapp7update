@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AutoTrade Plus{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Banner -->
+    <div class="banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="banner-title">AutoTrade Plus</h1>
+                    <p class="banner-subtitle">Sophisticated Stock Trading Platform</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="status-indicators">
+                        <span class="status-badge" id="connection-status">
+                            <i data-feather="wifi" class="me-1"></i>
+                            <span id="connection-text">Disconnected</span>
+                        </span>
+                        <span class="status-badge" id="streaming-status">
+                            <i data-feather="activity" class="me-1"></i>
+                            <span id="streaming-text">Stopped</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <div class="navbar-nav">
+                <a class="nav-link" href="{{ url_for('dashboard') }}">
+                    <i data-feather="trending-up" class="me-1"></i>Dashboard
+                </a>
+                <a class="nav-link" href="{{ url_for('settings') }}">
+                    <i data-feather="settings" class="me-1"></i>Settings
+                </a>
+                <a class="nav-link" href="{{ url_for('analytics') }}">
+                    <i data-feather="bar-chart-2" class="me-1"></i>Analytics
+                </a>
+            </div>
+            
+            <!-- Control Buttons -->
+            <div class="d-flex">
+                <button class="btn btn-outline-primary btn-sm me-2" id="connect-btn">
+                    <i data-feather="power" class="me-1"></i>Connect
+                </button>
+                <button class="btn btn-outline-success btn-sm me-2" id="stream-btn">
+                    <i data-feather="play" class="me-1"></i>Start Stream
+                </button>
+                <button class="btn btn-outline-warning btn-sm" id="force-trade-btn">
+                    <i data-feather="zap" class="me-1"></i>Force Trade
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <small class="text-muted">
+                AutoTrade Plus &copy; 2025 | Exact reserve_file.py calculations integrated
+            </small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Base JavaScript -->
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Global variables
+        let isConnected = false;
+        let isStreaming = false;
+        let forceTradeEnabled = false;
+        
+        // Update status indicators
+        function updateStatus() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    isConnected = data.connected;
+                    isStreaming = data.streaming;
+                    forceTradeEnabled = data.force_trade_mode;
+                    
+                    // Update connection status
+                    const connectionStatus = document.getElementById('connection-status');
+                    const connectionText = document.getElementById('connection-text');
+                    if (isConnected) {
+                        connectionStatus.className = 'status-badge status-connected';
+                        connectionText.textContent = 'Connected';
+                    } else {
+                        connectionStatus.className = 'status-badge status-disconnected';
+                        connectionText.textContent = 'Disconnected';
+                    }
+                    
+                    // Update streaming status
+                    const streamingStatus = document.getElementById('streaming-status');
+                    const streamingText = document.getElementById('streaming-text');
+                    if (isStreaming) {
+                        streamingStatus.className = 'status-badge status-streaming';
+                        streamingText.textContent = 'Streaming';
+                    } else {
+                        streamingStatus.className = 'status-badge status-stopped';
+                        streamingText.textContent = 'Stopped';
+                    }
+                    
+                    // Update button states
+                    updateButtonStates();
+                })
+                .catch(error => console.error('Error fetching status:', error));
+        }
+        
+        // Update button states
+        function updateButtonStates() {
+            const connectBtn = document.getElementById('connect-btn');
+            const streamBtn = document.getElementById('stream-btn');
+            const forceTradeBtn = document.getElementById('force-trade-btn');
+            
+            // Connect button
+            if (isConnected) {
+                connectBtn.innerHTML = '<i data-feather="power" class="me-1"></i>Disconnect';
+                connectBtn.className = 'btn btn-outline-danger btn-sm me-2';
+            } else {
+                connectBtn.innerHTML = '<i data-feather="power" class="me-1"></i>Connect';
+                connectBtn.className = 'btn btn-outline-primary btn-sm me-2';
+            }
+            
+            // Stream button
+            if (isStreaming) {
+                streamBtn.innerHTML = '<i data-feather="pause" class="me-1"></i>Stop Stream';
+                streamBtn.className = 'btn btn-outline-danger btn-sm me-2';
+            } else {
+                streamBtn.innerHTML = '<i data-feather="play" class="me-1"></i>Start Stream';
+                streamBtn.className = 'btn btn-outline-success btn-sm me-2';
+            }
+            streamBtn.disabled = !isConnected;
+            
+            // Force trade button
+            if (forceTradeEnabled) {
+                forceTradeBtn.innerHTML = '<i data-feather="zap-off" class="me-1"></i>Disable Force';
+                forceTradeBtn.className = 'btn btn-warning btn-sm';
+            } else {
+                forceTradeBtn.innerHTML = '<i data-feather="zap" class="me-1"></i>Force Trade';
+                forceTradeBtn.className = 'btn btn-outline-warning btn-sm';
+            }
+            
+            feather.replace();
+        }
+        
+        // Control button handlers
+        document.getElementById('connect-btn').addEventListener('click', function() {
+            const action = isConnected ? 'disconnect' : 'connect';
+            fetch(`/api/${action}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateStatus();
+                    } else {
+                        alert(`Error: ${data.error}`);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+        
+        document.getElementById('stream-btn').addEventListener('click', function() {
+            const action = isStreaming ? 'stop_streaming' : 'start_streaming';
+            fetch(`/api/${action}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateStatus();
+                    } else {
+                        alert(`Error: ${data.error}`);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+        
+        document.getElementById('force-trade-btn').addEventListener('click', function() {
+            fetch('/api/toggle_force_trade', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        updateStatus();
+                    } else {
+                        alert(`Error: ${data.error}`);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+        
+        // Initialize status
+        updateStatus();
+        
+        // Update status every 5 seconds
+        setInterval(updateStatus, 5000);
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - AutoTrade Plus{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Performance Overview -->
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="bar-chart-2" class="me-2"></i>Performance Overview
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="analytics-stat">
+                            <div class="stat-icon">
+                                <i data-feather="trending-up"></i>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-value" id="analytics-total-trades">0</div>
+                                <div class="stat-label">Total Trades</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="analytics-stat">
+                            <div class="stat-icon">
+                                <i data-feather="dollar-sign"></i>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-value" id="analytics-total-profit">$0.00</div>
+                                <div class="stat-label">Total P&L</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="analytics-stat">
+                            <div class="stat-icon">
+                                <i data-feather="percent"></i>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-value" id="analytics-win-rate">0.0%</div>
+                                <div class="stat-label">Win Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="analytics-stat">
+                            <div class="stat-icon">
+                                <i data-feather="dollar-sign"></i>
+                            </div>
+                            <div class="stat-details">
+                                <div class="stat-value" id="analytics-available-funds">$0.00</div>
+                                <div class="stat-label">Available Funds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Real-time Metrics -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i data-feather="activity" class="me-2"></i>Real-time Metrics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="metric-item">
+                    <label>Current Settings:</label>
+                    <div class="metric-value">
+                        <div class="small">
+                            <div>Equity/Trade: $<span id="current-equity">0</span></div>
+                            <div>RSI Period: <span id="current-rsi-period">0</span></div>
+                            <div>BB Period: <span id="current-bb-period">0</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metric-item">
+                    <label>Stochastic Settings:</label>
+                    <div class="metric-value">
+                        <div class="small">
+                            <div>%K Period: <span id="current-stoch-k-period">0</span></div>
+                            <div>%D Period: <span id="current-stoch-d-period">0</span></div>
+                            <div>%K Min: <span id="current-stoch-k-min">0</span></div>
+                            <div>%D Min: <span id="current-stoch-d-min">0</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metric-item">
+                    <label>Last Rate Changes:</label>
+                    <div class="metric-value">
+                        <div class="small">
+                            <div>Price: <span id="analytics-last-price-change">N/A</span></div>
+                            <div>RSI: <span id="analytics-last-rsi-change">N/A</span></div>
+                            <div>Bollinger: <span id="analytics-last-bollinger-change">N/A</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Trade History -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i data-feather="clock" class="me-2"></i>Trade History
+                </h5>
+                <button class="btn btn-outline-primary btn-sm" id="refresh-history-btn">
+                    <i data-feather="refresh-cw" class="me-1"></i>Refresh
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="history-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Quantity</th>
+                                <th>Buy Price</th>
+                                <th>Sell Price</th>
+                                <th>Profit/Loss</th>
+                                <th>Buy Time</th>
+                                <th>Sell Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body">
+                            <tr>
+                                <td colspan="8" class="text-center text-muted py-4">
+                                    <i data-feather="inbox" class="me-2"></i>
+                                    No trade history available
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Analytics Charts -->
+<div class="row mt-4">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i data-feather="pie-chart" class="me-2"></i>Trading Criteria Status
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="criteria-status" id="criteria-status">
+                    <div class="text-center text-muted">
+                        <i data-feather="loader" class="me-2"></i>Loading criteria status...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <h6 class="mb-0">
+                    <i data-feather="trending-up" class="me-2"></i>System Status
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="system-status">
+                    <div class="status-item">
+                        <span class="status-label">Connection:</span>
+                        <span class="status-value" id="system-connection">Disconnected</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Streaming:</span>
+                        <span class="status-value" id="system-streaming">Stopped</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Force Trade:</span>
+                        <span class="status-value" id="system-force-trade">Disabled</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Active Positions:</span>
+                        <span class="status-value" id="system-active-positions">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}
